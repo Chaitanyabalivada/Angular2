@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body"  >
+        <div class="row" >
+            <img src="./app/assets/images/logo.jpg" 
+                 class="img-responsive center-block"
+                 style="max-height:300px;padding-bottom:50px"/>
+        </div>
+        <div class="row"  >
+            <div class="col-md-2">First Name:</div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]='firstName'/> <button class="btn btn-success" (click)="contactUS()" [textContent]="submit">
+                    
+                  </button>
+            </div>
+            
+            <div class="text-center">
+                <a href="http://www.aakashhanda.me">www.aakashhanda.me</a>
+            </div>
+        </div>
+    </div>
+</div>

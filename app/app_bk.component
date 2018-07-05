@@ -1,0 +1,68 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {RouterModule} from '@angular/router'
+
+import {AppComponent} from './app.component'
+import { BookComponent } from './book.component'
+import { PenComponent } from './pens.component';
+import { ProductComponent } from './products/product.component';
+import { OrdersComponent } from './orders/order.component';
+import { StarComponent } from './shared/star.component';
+import { RatingComponent } from './orders/rating.component';
+import { ProductFilterPipe } from './products/product-filter.pipe';
+import {OrderPipeFilter} from './orders/order.pipe';
+import { ProductService } from './products/product.service';
+import { OrderService } from './orders/order.service';
+import { ProductDetailComponent } from './products/product-detail.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './notFound.component';
+import { ContactUsComponent } from './contactus/contactus.component';
+import { ProductGaurd } from './products/product-gaurd.Service';
+import { OrderDetailComponent } from './orders/order-detail.component';
+import { OrderGaurdService } from './orders/order-gaurd.service';
+
+  
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      {path:'products', component:ProductComponent},
+      {path:'products/:id',canActivate:[ProductGaurd], component:ProductDetailComponent},
+      {path:'orders', component:OrdersComponent},
+      {path:'orders/:id',canActivate:[OrderGaurdService],component:OrderDetailComponent},
+      {path:'home', component:HomeComponent},
+      {path:'contactus', component:ContactUsComponent},
+      {path:'', redirectTo:'home',pathMatch:'full'},
+      {path:'**', component:NotFoundComponent}
+     
+    ])
+  ],
+  declarations: [
+    AppComponent,
+    BookComponent,
+    PenComponent,
+    ProductComponent,
+    OrdersComponent,
+    StarComponent,
+    RatingComponent,
+    ProductFilterPipe,
+    OrderPipeFilter,
+    ProductDetailComponent,
+    HomeComponent,
+    NotFoundComponent,
+    ContactUsComponent,
+    OrderDetailComponent
+      
+  ],
+  providers:[ProductService,
+    OrderService,
+    ProductGaurd,OrderGaurdService],
+  bootstrap: [AppComponent]
+})
+
+export class AppModule { }
